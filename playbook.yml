@@ -5,19 +5,19 @@
   task:
   - name: install pyhton docker centos
     yum: 
-      name: "{{ pyhton }}"
+      name: "{{ python }}"
       state: present
     when:
     - ansible_distribution == "CentOS"
-  - name:
+  - name: install python docker Ubuntu
     apt:
-      name: "{{ pyhton }}"
+      name: "{{ python }}"
       state: present
     when:
     - ansible_distribution == "Ubuntu"
   - name: pull images dari docker hub
     docker_image:
-      name: "{{ image  }}"
+      name: "{{ image }}"
       state: present
       force: yes
   - name: create container
