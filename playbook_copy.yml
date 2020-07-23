@@ -1,0 +1,11 @@
+##copy file to contaniner
+- hosts: server
+  vars:
+    nm_file: index.html
+  tasks:
+    - name: copy file ke /var/www/html
+      copy:
+        src: /root/tes1/index.html
+        dest: /root/temp1
+    - name: copy to contaniner
+      shell: docker cp /root/temp1/index.html container_docker_jenkins:/var/www/html
