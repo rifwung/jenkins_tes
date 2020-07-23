@@ -36,7 +36,7 @@
     docker_container:
       name: container_docker_jenkins
       image: "{{ image }}"
-      state: present
+      state: started
       published_port:
       - 8090:80
       recreate: yes
