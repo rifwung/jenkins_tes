@@ -2,7 +2,7 @@
   vars:
   - image: rifwung3/ccid-jenkins:beta
   - python: python-docker
-  task:
+  tasks:
   - name: install pyhton docker centos
     yum: 
       name: "{{ python }}"
