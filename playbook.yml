@@ -1,7 +1,7 @@
 - hosts: server
   vars:
   - image: rifwung3/ccid-jenkins:beta
-  - python: pyhton-docker
+  - python: python-docker
   task:
   - name: install pyhton docker centos
     yum: 
