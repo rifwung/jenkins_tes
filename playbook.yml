@@ -11,10 +11,22 @@
     - ansible_distribution == "CentOS"
   - name: install python docker Ubuntu
     apt:
-      name: "{{ python }}"
+      name: python-pip
       state: present
     when:
     - ansible_distribution == "Ubuntu"
+  - name: uninstall python-docker
+    apt:
+      name: python-docker
+      state: absent
+    when:
+    - ansible_distribution == "Ubuntu"
+  - name: install docker-py
+    apt:
+      name: docker-py
+      state: present
+    when:
+    - ansible_distribution == "Ubuntu"  
   - name: pull images dari docker hub
     docker_image:
       name: "{{ image }}"
