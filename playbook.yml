@@ -1,0 +1,30 @@
+- hosts: server
+  vars:
+  - image: rifwung3/ccid-jenkins:beta
+  - python: pyhton-docker
+  task:
+  - name: install pyhton docker centos
+    yum: 
+      name: "{{ pyhton }}"
+      state: present
+    when:
+    - ansible_distribution == "CentOS"
+  - name:
+    apt:
+      name: "{{ pyhton }}"
+      state: present
+    when:
+    - ansible_distribution == "Ubuntu"
+  - name: pull images dari docker hub
+    docker_image:
+      name: "{{ image  }}"
+      state: present
+      force: yes
+  - name: create container
+    docker_container:
+      name: container_docker_jenkins
+      image: "{{ image }}"
+      state: present
+      published_port:
+      - 8090:80
+      recreate: yes
